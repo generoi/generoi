@@ -1,0 +1,7 @@
+name = Generoi
+description = Genero base theme for Drupal
+
+core = 7.x
+engine = phptemplate
+
+scripts[] = bower_components/console-polyfill/index.js

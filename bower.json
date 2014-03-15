@@ -1,0 +1,21 @@
+{
+  "name": "genero-theme",
+  "version": "0.0.1",
+  "homepage": "https://github.com/generoi/genero-theme",
+  "authors": [
+    "Oskar Schöldström <public@oxy.fi>"
+  ],
+  "description": "Base theme",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "console-polyfill": "~0.1.1"
+  }
+}
