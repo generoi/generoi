@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "console-polyfill": "~0.1.1"
+    "console-polyfill": "~0.1.1",
+    "pace": "~0.5.1",
+    "fastclick": "~1.0.0"
   }
 }

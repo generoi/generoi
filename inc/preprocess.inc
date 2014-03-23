@@ -97,7 +97,4 @@ function generoi_preprocess_block(&$variables) {
       }
       break;
   }
-
-  // Convenience variable for classes based on block ID
-  $block_id = $variables['block']->module . '-' . $variables['block']->delta;
 }
