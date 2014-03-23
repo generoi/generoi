@@ -49,7 +49,11 @@
 // Only display the icon, not any other text within the element.
 // @code
 // <span class="fa fa-clock-o icon-only">Label</span>
-.icon-only       { width: 1em; height: 1em; overflow: hidden; &:before { margin-right: 1em; margin-bottom: 1em; display: block; } }
+.icon-only       {
+  width: 1em; height: 1em; overflow: hidden;
+  &:before { margin-right: 1em; margin-bottom: 1em; display: block; }
+  .edit & { height: auto; width: auto; }
+}
 
 // Spacing / positioning / separators
 // ------------------------------------------------------
