@@ -1,0 +1,76 @@
+// Drupal specific classes
+// ----------------------------------------------------------------------------
+
+$form-item-margin: 1em !default;
+
+.fieldset-description { font-style: italic; }
+fieldset.collapsible { border-radius: 0; }
+
+// Override the gray color set by drupal
+label { color: inherit; font-size: 1em; }
+
+// Dont span entire width as foundation sets
+select {
+  width: auto; max-width: 100%;
+}
+
+// Hide filter information completely
+fieldset.filter-wrapper { display: none; }
+
+// Place the upload field on the same row as the upload button.
+.form-managed-file input { width: auto; }
+// Add spacing between filename and remove button.
+.form-managed-file span.file { margin-right: 1em; }
+
+textarea {
+  line-height: $base-line-height;
+  min-height: 6em;
+  border-radius: $global-radius;
+}
+
+// add the same margins as inputs have
+.form-textarea-wrapper textarea { margin-bottom: $form-item-margin; }
+
+// Override system.theme.css with a referencable variable that we can use
+// elsewhere
+.form-item, .form-actions {
+  margin-top: $form-item-margin;
+  margin-bottom: $form-item-margin;
+}
+
+// Styling classes
+// ------------------------------------------------------
+// Move actions to the left instead of the default center.
+.form-actions-left .form-actions { text-align: left !important; }
+// Fieldsets with the class row are used for columnizing form items.
+fieldset.row { border: 0; }
+// Condense the output by removing the form item spacing.
+
+// Elements
+// ------------------------------------------------------
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"] {
+  border-radius: $input-border-radius;
+  &.button {
+    // Do not extend as there are far too many button states and we only care
+    // about the basic style
+    @include button-base;
+    @include button-size;
+    @include button-style;
+    border-radius: $button-radius;
+    height: auto;
+    cursor: text;
+    text-align: left;
+  }
+}

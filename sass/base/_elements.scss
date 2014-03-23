@@ -1,0 +1,20 @@
+// In case something spans outside the page.
+body { overflow-x: hidden; }
+
+// Remove dotted line from abbreviations.
+abbr[title] { border-bottom: 0; }
+
+// Make picture elements and iframe videos responsive
+.picture img,
+iframe[src*="youtube.com/"] { width: 100%; }
+
+// Lists should have their styles within the grid.
+ol, ul { margin-left: 1.5em; }
+
+img {
+  // Fix for images inserted via WYSIWYG
+  height: auto !important;
+  // Fix for IE8
+  // @see http://stackoverflow.com/a/8831173/319855
+  width: inherit;
+}

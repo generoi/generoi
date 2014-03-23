@@ -1,0 +1,11 @@
+// Style drupal messages using foundations alert box styles.
+.alert-box, .messages-inline {
+  @include alert-base();
+  .close {
+    @include alert-close();
+    text-decoration: none;
+  }
+  &.status { @include alert-style($success-color); }
+  &.warning { @include alert-style($warning-color); }
+  &.error { @include alert-style($alert-color); }
+}

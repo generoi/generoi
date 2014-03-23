@@ -1,0 +1,53 @@
+/**
+ * @file
+ */
+
+// Fix Zurb Foundation Reveal Modal z-index and make it play nice with dropdown
+// menus, lightboxes, etc.
+.reveal-modal {
+  z-index: 999;
+}
+
+// Override Drupal Core pager styles. This is necessary because we need to keep
+// the .pager class on pagers for Views AJAX to work. If you are disabling
+// Drupal Core CSS you can safely comment the following lines.
+.item-list .pager {
+  clear: none;
+}
+.item-list .pager li {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+// Override max-width 100% for map displays
+#map img,
+.gmap img,
+.view-gmap img,
+.openlayers-map img,
+#getlocations_map_canvas img,
+#locationmap_map img,
+.geofieldMap img,
+.geolocation-views-map img,
+.views_horizontal_slider img {
+  max-width: none !important;
+}
+
+// Disable scrollbars in gmap info windows
+.gmap-popup {
+  overflow: hidden;
+}
+
+// Delegate the inline-list style to the .menu-element.
+// This is useful for styling a menu-block.
+.inline-menu .menu {
+  @extend .inline-list;
+}
+
+// Body uses a line-height of 1 which gets overriden by ol, ul which have the
+// same line-height as p. Reset the line-height for all nodes so that teasers
+// wont inherit the parent lists line-height.
+.node { line-height: 1; }
+
+// Strike through all elements (not only a) with the untranslated class.
+.locale-untranslated { text-decoration: line-through; }

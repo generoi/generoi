@@ -1,0 +1,152 @@
+// Common abstract classes to extend or parametrics are stored here.
+
+// Font styles
+// ------------------------------------------------------
+.font-sans-serif { font-family: $ff-sans-serif; -webkit-font-smoothing: antialiased; }
+.font-serif      { font-family: $ff-serif; }
+.font-tiny       { font-size: 0.5em; }
+.font-small      { font-size: 0.75em; }
+.font-normal     { font-size: 1em; }
+.font-big        { font-size: 1.5em; }
+
+// Styling
+// ------------------------------------------------------
+// @see http://goo.gl/LkDx5v
+// @see http://goo.gl/SKqoZK
+// .left {}
+// .right {}
+// .text-left {}
+// .text-center {}
+// .text-right {}
+// .text-justify {}
+// .hide {}
+.text-uppercase  { text-transform: uppercase; }
+.text-underline  { text-decoration: underline; }
+.pre             { white-space: pre; }
+.bg-primary      { background-color: $primary-color; }
+.bg-secondary    { background-color: $secondary-color; }
+.color-primary   { color: $primary-color !important; }
+.color-secondary { color: $secondary-color !important; }
+.color-red       { color: $red-color !important; }
+.hide, .hidden   { display: none !important; }
+// Provide foundations button radius styles to all elements.
+// These dont display overflow, so that child elements such as images dont
+// overflow, therefore this is not safe for eg teasers which could contain fb
+// like boxes.
+.radius          { @include radius($button-radius); overflow: hidden; }
+.round           { @include radius($button-round); overflow: hidden; }
+// Provide generic disabled state just like foundation buttons.
+.disabled        { opacity: $button-disabled-opacity;  }
+.block           { display: block; }
+.inline-block    { display: inline-block; vertical-align: top; }
+.clear           { clear: both; }
+// Stop images from spanning all available space.
+.image-no-span img { width: auto !important; }
+
+
+// Icons
+// --------------------------------------------------------
+// Only display the icon, not any other text within the element.
+// @code
+// <span class="fa fa-clock-o icon-only">Label</span>
+.icon-only       { width: 1em; height: 1em; overflow: hidden; &:before { margin-right: 1em; margin-bottom: 1em; display: block; } }
+
+// Spacing / positioning / separators
+// ------------------------------------------------------
+@each $position in left, right, top, bottom {
+  .border-#{$position} { border-#{$position}: solid 1px;  }
+  .absolute-#{$position} { position: absolute; #{$position}: 0;  }
+  .margin-#{$position} { margin-#{$position}: $column-gutter;  }
+  .padding-#{$position} { padding-#{$position}: $column-gutter;  }
+  .no-margin-#{$position} { margin-#{$position}: 0 !important;  }
+  .no-padding-#{$position} { padding-#{$position}: 0 !important;  }
+}
+.margin { margin: $column-gutter; }
+.padding { margin: $column-gutter; }
+.no-margin { margin: 0 !important; }
+.no-padding { padding: 0 !important; }
+
+// Breakpoints
+// ------------------------------------------------------
+$media-names: small-up, small-only, medium-up, medium-only, large-up, large-only, xlarge-up, xlarge-only, xxlarge-up, xxlarge-only, landscape, portrait;
+$media-queries: $small-up, $small-only, $medium-up, $medium-only, $large-up, $large-only, $xlarge-up, $xlarge-only, $xxlarge-up, $xxlarge-only, $landscape, $portrait;
+@for $i from 1 through length($media-names) {
+  // Interpolated variable names arent suported in SASS.
+  $query: nth($media-queries, $i);
+  $name: nth($media-names, $i);
+
+  // Only display element for specific breakpoint
+  .#{$name} { display: none !important; @media #{$query} { display: block !important; } }
+  @media #{$query} {
+    .#{$name}-hide { display: none !important; }
+    .#{$name}-center { text-align: center; }
+    .#{$name}-clear-left { clear: left; }
+    .#{$name}-clear-right { clear: right; }
+  }
+}
+
+// Helper structures
+// ----------------------------------------
+
+// Columnize an element block, so that they can be added one after another not
+// specifying a size but using the grid gutter.
+// @code
+// <div>
+//   <div class="block-column border-right"></div>
+//   <div class="block-column border-right"></div>
+//   <div class="block-column"></div>
+// </div>
+.block-column {
+  display: inline-block;
+  padding-left: $column-gutter/2;
+  padding-right: $column-gutter/2;
+  // Make all columns look even
+  vertical-align: top;
+  // Disable foundation grids last column float right
+  & + .block-column:last-child { float:none !important; }
+}
+
+// Make an element span the entire area of a column, this should most likely be
+// used together with margin-left and margin-right no adhere to the grid.
+// @code
+// <div class="columns large-12 layer">
+//   <div><img /></div>
+//   <div class="layered-foreground margin-left margin-right">
+//   </div>
+// </div>
+.layer { position: relative; }
+.layer-foreground {
+  position: absolute;
+  @each $position in left, right, top, bottom { #{$position}: 0; }
+  > .row {
+    &, > .columns { height: 100%; }
+  }
+}
+.layer-background {
+  img { width: 100% !important; height: auto !important;  }
+}
+
+
+// Remove the grid values from an element, this should be applied on a .row
+// ------------------------------------------------------
+// @code
+// <div class="row something-reset">
+//   <div class="columns">
+//   </div>
+// </div>
+%reset-grid-row {
+  margin-left: auto;
+  margin-right: auto;
+  .columns {
+    padding-left: 0;
+    padding-right: 0;
+    float: none;
+  }
+}
+
+// Remove box decorations from an element, eg. form items.
+%clean-decorations {
+  border: 0;
+  border-radius: 0;
+  @include box-shadow(none);
+}

@@ -1,0 +1,53 @@
+// pace (https://github.com/HubSpot/pace)
+// ----------------------------------------
+
+$default-pace-color: $primary-color !default;
+
+.pace {
+  pointer-events: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: $default-pace-color;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 3px;
+  transition: width 1s;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px $default-pace-color, 0 0 5px $default-pace-color;
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: $default-pace-color;
+  border-left-color: $default-pace-color;
+  border-radius: 10px;
+  animation: pace-spinner 400ms linear infinite;
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}

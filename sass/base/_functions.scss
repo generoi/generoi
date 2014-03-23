@@ -1,0 +1,7 @@
+// Viewport based font size
+// ------------------------------------------
+// Em to vw
+@function em-vw($em, $viewport) {
+  $size: strip-unit($em) * $em-base;
+  @return $size / strip-unit($viewport) * 100vw;
+}

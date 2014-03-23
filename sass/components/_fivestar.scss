@@ -1,0 +1,22 @@
+// Fivestar
+// -------------------------------------------------
+$fivestar-on-color: $secondary-color !default;
+$fivestar-off-color: $gray-light-color !default;
+
+form.fivestar-widget {
+  // Remove the default form margin
+  margin-bottom: 0;
+  // Hide the progress message and move the throbber above the element not to
+  // break any layouts
+  .ajax-progress {
+    position: absolute;
+    margin-top: -20px;
+    .message { display: none; }
+  }
+}
+
+// Style the fontawesome fivestar widget
+.fivestar-fontawesome .star {
+  a:before { color: $fivestar-off-color; }
+  &.hover, &.on { a:before { color: $fivestar-on-color; } }
+}
