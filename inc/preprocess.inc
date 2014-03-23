@@ -12,6 +12,16 @@ function generoi_preprocess_html(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_page().
+ */
+function generoi_preprocess_page(&$variables) {
+  // Remove tabs as contextual links are the preferred way at Genero.
+  if (isset($variables['tabs'])) {
+    unset($variables['tabs']);
+  }
+}
+
+/**
  * Implements template_preprocess_region().
  */
 function generoi_preprocess_region(&$variables) {
