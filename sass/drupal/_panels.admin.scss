@@ -1,0 +1,41 @@
+// Clear foundations [class*="column"]+[class*="column"]:last-child
+.panels-section-columns {
+  float: none !important;
+}
+// Overflow hidden breaks the Panels IPE.
+body.panels-ipe { overflow-x: visible; }
+
+// Make the IPE UI more compact
+// -------------------------------------------
+div.panels-ipe-handlebar-wrapper li a span,
+div.panels-ipe-newblock a span {
+  height: 20px;
+  width: 20px;
+}
+div.panels-ipe-handlebar-wrapper li a,
+div.panels-ipe-dragtitle span,
+div.panels-ipe-newblock a,
+span.panels-ipe-draghandle-icon {
+  padding: 2px;
+  height: inherit;
+}
+span.panels-ipe-draghandle-icon-inner {
+  width: 20px;
+  height: 20px;
+  background-size: 78%;
+}
+div.panels-ipe-draghandle span.panels-ipe-draghandle-icon {
+  width: auto;
+  height: auto;
+  padding: 2px !important;
+}
+div.panels-ipe-draghandle,
+div.panels-ipe-nodraghandle {
+  padding: 5px 4px 0;
+}
+// Override theme styling
+ul.panels-ipe-linkbar.inline li { margin-left: 0 !important; }
+
+// Align buttons in the IPE on the same row
+div#panels-ipe-control-container { text-align: center; padding-bottom: 0; margin-bottom: -.5em; }
+#panels-ipe-control-container > div { display: inline-block; }

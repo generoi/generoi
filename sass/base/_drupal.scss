@@ -40,7 +40,9 @@
 
 // Delegate the inline-list style to the .menu-element.
 // This is useful for styling a menu-block.
-.inline-menu .menu {
+.inline-menu .menu,
+// Drupal (panels) uses ul.inline
+ul.inline {
   @extend .inline-list;
 }
 

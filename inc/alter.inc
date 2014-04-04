@@ -82,6 +82,7 @@ function generoi_css_alter(&$css) {
     'modules/system/system.messages.css' => FALSE, // We use foundation
     'modules/system/system.base.css' => FALSE, // Dont load all those images
     'modules/system/system.theme.css' => FALSE, // Dont load all those images
+    // Zurb removes system.menus.css
     'modules/filter/filter.css' => FALSE, // Dont load all those images
   );
   $css = array_diff_key($css, $exclude);
