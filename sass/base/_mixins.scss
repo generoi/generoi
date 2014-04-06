@@ -35,3 +35,21 @@
     color: $round-color;
   }
 }
+
+@mixin throbber(
+  $size: 14px,
+  $color: $primary-color
+) {
+  width: $size;
+  height: $size;
+  border: solid 2px transparent;
+  border-top-color: $color;
+  border-left-color: $color;
+  border-radius: $size * 0.75;
+  animation: throbber-spinner 400ms linear infinite;
+}
+
+@keyframes throbber-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}

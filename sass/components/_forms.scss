@@ -2,6 +2,8 @@
 // ----------------------------------------------------------------------------
 
 $form-item-margin: 1em !default;
+$default-throbber-size: 14px !default;
+$default-throbber-color: $primary-color !default;
 
 .fieldset-description { font-style: italic; }
 fieldset.collapsible { border-radius: 0; }
