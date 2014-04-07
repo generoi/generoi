@@ -2,6 +2,8 @@
  * @file
  */
 
+$default-margin: .5rem !default;
+
 // Fix Zurb Foundation Reveal Modal z-index and make it play nice with dropdown
 // menus, lightboxes, etc.
 .reveal-modal {
@@ -18,6 +20,9 @@
   padding: 0;
   margin: 0;
   display: inline-block;
+}
+.item-list ul {
+  margin-bottom: $default-margin;
 }
 
 // Override max-width 100% for map displays
