@@ -9,6 +9,9 @@ scripts[] = bower_components/console-polyfill/index.js
 scripts[] = bower_components/fastclick/lib/fastclick.js
 scripts[] = bower_components/pace/pace.min.js
 
+; Panel layouts
+plugins[panels][layouts] = layouts
+
 ; Foundation settings
 
 ; Top Bar.

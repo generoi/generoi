@@ -1,5 +1,9 @@
-// In case something spans outside the page.
-body { overflow-x: hidden; }
+body {
+  // In case something spans outside the page.
+  overflow-x: hidden;
+  // Cancel foundations height
+  height: auto;
+}
 
 // Remove dotted line from abbreviations.
 abbr[title] { border-bottom: 0; }

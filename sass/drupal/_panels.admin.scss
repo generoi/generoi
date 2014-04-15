@@ -39,3 +39,9 @@ ul.panels-ipe-linkbar.inline li { margin-left: 0 !important; }
 // Align buttons in the IPE on the same row
 div#panels-ipe-control-container { text-align: center; padding-bottom: 0; margin-bottom: -.5em; }
 #panels-ipe-control-container > div { display: inline-block; }
+
+// Fix Media Dialog appearing below panels.
+// @see https://drupal.org/comment/7699931#comment-7699931
+.ui-dialog.ui-front {
+  z-index: 1002;
+}

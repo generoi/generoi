@@ -1,5 +1,8 @@
 // Common abstract classes to extend or parametrics are stored here.
 
+$ff-serif: Georgia, Serif !default;
+$ff-sans-serif: Helvetica, Arial, Sans-serif !default;
+
 // Font styles
 // ------------------------------------------------------
 .font-sans-serif { font-family: $ff-sans-serif; -webkit-font-smoothing: antialiased; }
