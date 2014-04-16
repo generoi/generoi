@@ -63,13 +63,15 @@ $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
 @each $position in left, right, top, bottom {
   .border-#{$position} { border-#{$position}: solid 1px;  }
   .absolute-#{$position} { position: absolute; #{$position}: 0;  }
-  .margin-#{$position} { margin-#{$position}: $column-gutter;  }
-  .padding-#{$position} { padding-#{$position}: $column-gutter;  }
+  .margin-#{$position} { margin-#{$position}: $default-margin;  }
+  .padding-#{$position} { padding-#{$position}: $default-margin;  }
+  .gutter-#{$position} { margin-#{$position}: $column-gutter; }
   .no-margin-#{$position} { margin-#{$position}: 0 !important;  }
   .no-padding-#{$position} { padding-#{$position}: 0 !important;  }
 }
-.margin { margin: $column-gutter; }
-.padding { margin: $column-gutter; }
+.margin { margin: $default-margin; }
+.padding { padding: $default-margin; }
+.gutter { margin: $column-gutter; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
 
