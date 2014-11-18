@@ -41,7 +41,7 @@ $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
 // Provide generic disabled state just like foundation buttons.
 .disabled        { opacity: $button-disabled-opacity;  }
 .block           { display: block; }
-.inline-block    { display: inline-block; vertical-align: top; }
+.inline-block    { display: inline-block; vertical-align: top; max-width: 100%;}
 .clear           { clear: both; }
 // Stop images from spanning all available space.
 .image-no-span img { width: auto !important; }
