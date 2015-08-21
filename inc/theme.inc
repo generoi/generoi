@@ -50,7 +50,7 @@ function generoi_context_bean_child(&$variables) {
 /**
  * Overrides theme_field().
  *
- * Edit doesnt work with zurb_foundation's theme_field override.
+ * Add back core theme_field(), zurb foundation removes too much.
  */
 function generoi_field($variables) {
   $output = '';

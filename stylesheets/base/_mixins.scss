@@ -1,0 +1,122 @@
+// Clearfix
+// --------------------------------------------------------
+@mixin clearfix {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// Link
+// --------------------------------------------------------
+@mixin link-color(
+  $color: $anchor-font-color,
+  $hover-color: $anchor-font-color-hover,
+  $text-decoration: underline
+) {
+  color: $color;
+  &.active, &:hover {
+    color: $hover-color;
+    text-decoration: $text-decoration;
+  }
+}
+
+// Colorize foundation icons
+// ------------------------------------------
+@mixin icon-color(
+  $normal-color,
+  $round-color: $primary-color
+) {
+  &:before {
+    color: $normal-color;
+  }
+  // Invert the colors if the icon is set the round.
+  &.icon-round:before {
+    background-color: $normal-color;
+    color: $round-color;
+  }
+}
+
+// Throbber
+// --------------
+@mixin throbber(
+  $size: 14px,
+  $color: $primary-color
+) {
+  width: $size;
+  height: $size;
+  border: solid 2px transparent;
+  border-top-color: $color;
+  border-left-color: $color;
+  border-radius: $size * 0.75;
+  animation: throbber-spinner 400ms linear infinite;
+}
+
+@keyframes throbber-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+// Arrows
+// -----------------------------
+@mixin arrow($direction, $color, $size, $position: false) {
+  display: block;
+  height: 0;
+  width: 0;
+
+  @if $position == true {
+    content: "";
+    position: absolute;
+
+    @if $direction == "top" {
+      bottom: 100%;
+      left: 50%;
+      margin-left: (-$size);
+    } @else if $direction == "bottom" {
+      top: 100%;
+      left: 50%;
+      margin-left: (-$size);
+    } @else if $direction == "left" {
+      right: 100%;
+      top: 50%;
+      margin-top: (-$size);
+    } @else if $direction == "right" {
+      left: 100%;
+      top: 50%;
+      margin-top: (-$size);
+    }
+  }
+
+  @if $direction == "top" {
+    border-top: $size solid transparent;
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  } @else if $direction == "right" {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == "bottom" {
+    border-top: $size solid $color;
+    border-bottom: $size solid transparent;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+  } @else if $direction == "left" {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid transparent;
+    border-right: $size solid $color;
+  } @else if $direction == "top-left" {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == "top-right" {
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+  } @else if $direction == "bottom-left" {
+    border-bottom: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == "bottom-right" {
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+  }
+}

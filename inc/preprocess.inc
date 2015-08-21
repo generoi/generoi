@@ -6,9 +6,31 @@
 function generoi_preprocess_html(&$variables) {
   // Add debugging helpers when the debug parameter is set.
   if (isset($_GET['debug']) || isset($_GET['DEBUG'])) {
-    drupal_add_js('https://getfirebug.com/releases/lite/1.3/firebug-lite.js');
     drupal_add_js('window.DEBUG = true;', 'inline');
+    if (strpos($_GLOBAL['base_url'], '.dev') !== FALSE) {
+      drupal_add_js($_GLOBALS['base_url'] . ':9090/target/target-script-min.js#anonymous');
+    }
   }
+  if (isset($_GET['firebug'])) {
+    drupal_add_js('https://getfirebug.com/releases/lite/1.3/firebug-lite.js');
+  }
+
+  // Add shims and libraries.
+  $condition = array('IE' => 'lt IE 9', '!IE' => FALSE);
+  $options = array('every_page' => TRUE);
+
+  $variables['conditional_scripts_array'][] = array(
+    'file' =>  libraries_get_path('es5-shim') . '/es5-shim.js',
+    'condition' => $condition,
+  );
+  $variables['conditional_scripts_array'][] = array(
+    'file' =>  libraries_get_path('console-polyfill') . '/index.js',
+    'condition' => $condition,
+  );
+
+  drupal_add_js(libraries_get_path('Array.from') . '/array-from.js', $options);
+  drupal_add_js(libraries_get_path('jquery-touchswipe') . '/jquery.touchSwipe.min.js', $options);
+  drupal_add_js(libraries_get_path('fastclick') . '/lib/fastclick.js', $options);
 }
 
 /**

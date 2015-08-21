@@ -1,16 +1,10 @@
 name = Generoi
-description = Genero base theme for Drupal
+description = Genero base theme for Drupal using zurb foundation as a base theme
 
 core = 7.x
 engine = phptemplate
 base theme = zurb_foundation
 
-scripts[] = bower_components/console-polyfill/index.js
-scripts[] = bower_components/fastclick/lib/fastclick.js
-scripts[] = bower_components/pace/pace.min.js
-
-; Panel layouts
-plugins[panels][layouts] = layouts
 
 ; Foundation settings
 
@@ -25,7 +19,7 @@ settings[zurb_foundation_top_bar_enable] = 0
 ;settings[zurb_foundation_top_bar_scrolltop] = 1
 
 ; Tooltips.
-settings[zurb_foundation_tooltip_enable] = 0
+settings[zurb_foundation_tooltip_enable] = 1
 ;settings[zurb_foundation_tooltip_position] = 'top'
 ;settings[zurb_foundation_tooltip_mode] = 'text'
 ;settings[zurb_foundation_tooltip_text] = 'More information?'

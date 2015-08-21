@@ -2,15 +2,16 @@
 
 $ff-serif: Georgia, Serif !default;
 $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
+$default-margin: $column-gutter !default;
 
 // Font styles
 // ------------------------------------------------------
 .font-sans-serif { font-family: $ff-sans-serif; -webkit-font-smoothing: antialiased; }
 .font-serif      { font-family: $ff-serif; }
-.font-tiny       { font-size: 0.5em; }
-.font-small      { font-size: 0.75em; }
-.font-normal     { font-size: 1em; }
-.font-big        { font-size: 1.5em; }
+.font-tiny       { font-size: 0.5rem; }
+.font-small      { font-size: 0.75rem; }
+.font-normal     { font-size: 1rem; }
+.font-big        { font-size: 1.5rem; }
 
 // Styling
 // ------------------------------------------------------
@@ -30,7 +31,6 @@ $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
 .bg-secondary    { background-color: $secondary-color; }
 .color-primary   { color: $primary-color !important; }
 .color-secondary { color: $secondary-color !important; }
-.color-red       { color: $red-color !important; }
 .hide, .hidden   { display: none !important; }
 // Provide foundations button radius styles to all elements.
 // These dont display overflow, so that child elements such as images dont
@@ -46,15 +46,14 @@ $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
 // Stop images from spanning all available space.
 .image-no-span img { width: auto !important; }
 
-
 // Icons
 // --------------------------------------------------------
 // Only display the icon, not any other text within the element.
 // @code
 // <span class="fa fa-clock-o icon-only">Label</span>
 .icon-only       {
-  width: 1em; height: 1em; overflow: hidden;
-  &:before { margin-right: 1em; margin-bottom: 1em; display: block; }
+  width: 1rem; height: 1rem; overflow: hidden;
+  &:before { margin-right: 1rem; margin-bottom: 1rem; display: block; }
   .edit & { height: auto; width: auto; }
 }
 
@@ -74,67 +73,6 @@ $ff-sans-serif: Helvetica, Arial, Sans-serif !default;
 .gutter { margin: $column-gutter; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
-
-// Breakpoints
-// ------------------------------------------------------
-$media-names: small-up, small-only, medium-up, medium-only, large-up, large-only, xlarge-up, xlarge-only, xxlarge-up, xxlarge-only, landscape, portrait;
-$media-queries: $small-up, $small-only, $medium-up, $medium-only, $large-up, $large-only, $xlarge-up, $xlarge-only, $xxlarge-up, $xxlarge-only, $landscape, $portrait;
-@for $i from 1 through length($media-names) {
-  // Interpolated variable names arent suported in SASS.
-  $query: nth($media-queries, $i);
-  $name: nth($media-names, $i);
-
-  // Only display element for specific breakpoint
-  .#{$name} { display: none !important; @media #{$query} { display: block !important; } }
-  @media #{$query} {
-    .#{$name}-hide { display: none !important; }
-    .#{$name}-center { text-align: center; }
-    .#{$name}-clear-left { clear: left; }
-    .#{$name}-clear-right { clear: right; }
-  }
-}
-
-// Helper structures
-// ----------------------------------------
-
-// Columnize an element block, so that they can be added one after another not
-// specifying a size but using the grid gutter.
-// @code
-// <div>
-//   <div class="block-column border-right"></div>
-//   <div class="block-column border-right"></div>
-//   <div class="block-column"></div>
-// </div>
-.block-column {
-  display: inline-block;
-  padding-left: $column-gutter/2;
-  padding-right: $column-gutter/2;
-  // Make all columns look even
-  vertical-align: top;
-  // Disable foundation grids last column float right
-  & + .block-column:last-child { float:none !important; }
-}
-
-// Make an element span the entire area of a column, this should most likely be
-// used together with margin-left and margin-right no adhere to the grid.
-// @code
-// <div class="columns large-12 layer">
-//   <div><img /></div>
-//   <div class="layered-foreground margin-left margin-right">
-//   </div>
-// </div>
-.layer { position: relative; }
-.layer-foreground {
-  position: absolute;
-  @each $position in left, right, top, bottom { #{$position}: 0; }
-  > .row {
-    &, > .columns { height: 100%; }
-  }
-}
-.layer-background {
-  img { width: 100% !important; height: auto !important;  }
-}
-
 
 // Remove the grid values from an element, this should be applied on a .row
 // ------------------------------------------------------
@@ -157,5 +95,5 @@ $media-queries: $small-up, $small-only, $medium-up, $medium-only, $large-up, $la
 %clean-decorations {
   border: 0;
   border-radius: 0;
-  @include box-shadow(none);
+  box-shadow: none;
 }

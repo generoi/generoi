@@ -1,6 +1,7 @@
 body {
   // In case something spans outside the page.
   overflow-x: hidden;
+  overflow-y: scroll;
   // Cancel foundations height
   height: auto;
 }

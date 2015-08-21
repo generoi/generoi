@@ -1,27 +1,6 @@
 <?php
 
 /**
- * Implements hook_html_head_alter().
- */
-function generoi_html_head_alter(&$head_elements) {
-  // Make canonical links absolute.
-  foreach ($head_elements as $key => $element) {
-    if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
-      $canonical_href = $element['#attributes']['href'];
-
-      if ($canonical_href[0] == '/') {
-        global $base_url;
-        $host = parse_url($base_url, PHP_URL_HOST);
-        $head_elements[$key]['#attributes']['href'] = 'http://' . $host . $canonical_href;
-      }
-      else {
-        unset($head_elements[$key]);
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_date_select_process_alter().
  *
  * Make date selects use proper month names instead of odd abbreviations.
@@ -67,8 +46,9 @@ function generoi_date_select_process_alter(&$element, $form_state, $context) {
  */
 function generoi_css_alter(&$css) {
   $exclude = array(
-    'sites/all/themes/zurb-foundation/css/normalize.css' => FALSE,
-    'sites/all/themes/zurb-foundation/css/foundation.min.css' => FALSE,
+    'sites/all/themes/contrib/zurb-foundation/css/normalize.css' => FALSE,
+    'sites/all/themes/contrib/zurb-foundation/css/foundation.min.css' => FALSE,
+    // Overriden or useless
     'sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css' => FALSE,
     'sites/all/modules/contrib/date/date_api/date.css' => FALSE,
     'sites/all/modules/contrib/picture/picture_wysiwyg.css' => FALSE,
@@ -80,10 +60,11 @@ function generoi_css_alter(&$css) {
     'sites/all/modules/contrib/fivestar/css/fivestar.css' => FALSE,
     'sites/all/modules/contrib/viewfield/viewfield.css' => FALSE, // request fails, file does not exist.
     'modules/system/system.messages.css' => FALSE, // We use foundation
-    'modules/system/system.base.css' => FALSE, // Dont load all those images
-    'modules/system/system.theme.css' => FALSE, // Dont load all those images
-    // Zurb removes system.menus.css
-    'modules/filter/filter.css' => FALSE, // Dont load all those images
+    // Dont load all those images
+    'modules/system/system.base.css' => FALSE,
+    'modules/system/system.theme.css' => FALSE,
+    'modules/system/system.menus.css' => FALSE,
+    'modules/filter/filter.css' => FALSE,
   );
   $css = array_diff_key($css, $exclude);
 }
@@ -97,7 +78,6 @@ function generoi_js_alter(&$javascript) {
     'misc/tableheader.js' => FALSE,
     'misc/tabledrag.js' => FALSE,
     'sites/all/modules/contrib/admin_menu/admin_devel/admin_devel.js' => FALSE,
-    // Included in foundation.js
     'sites/all/modules/contrib/picture/picturefill/matchmedia.js' => FALSE,
   );
   $javascript = array_diff_key($javascript, $exclude);

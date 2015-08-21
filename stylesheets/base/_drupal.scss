@@ -4,6 +4,9 @@
 
 $default-margin: .5rem !default;
 
+.element-invisible { @include element-invisible(); }
+.element-focusable:focus { @include element-invisible-off(); }
+
 // Fix Zurb Foundation Reveal Modal z-index and make it play nice with dropdown
 // menus, lightboxes, etc.
 .reveal-modal {
