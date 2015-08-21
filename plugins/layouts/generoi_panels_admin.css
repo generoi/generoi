@@ -1,0 +1,22 @@
+[role="main"], .row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.l-sidebar-first,
+.l-sidebar-second {
+  flex: 1;
+  display: flex;
+}
+.l-sidebar-first > .panel-region,
+.l-sidebar-second > .panel-region {
+  flex: 1;
+}
+.l-main { flex: 3; order: 2; }
+.l-sidebar-first { order: 1; }
+.l-sidebar-second { order: 3; }
+
+.row > .panel-region,
+.row > .large-12 {
+  flex: 1;
+}

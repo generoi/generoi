@@ -5,6 +5,8 @@ core = 7.x
 engine = phptemplate
 base theme = zurb_foundation
 
+; Panel integrations
+plugins[panels][layouts] = plugins/layouts
 
 ; Foundation settings
 
