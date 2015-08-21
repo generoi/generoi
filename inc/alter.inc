@@ -49,6 +49,7 @@ function generoi_css_alter(&$css) {
     'sites/all/themes/contrib/zurb-foundation/css/normalize.css' => FALSE,
     'sites/all/themes/contrib/zurb-foundation/css/foundation.min.css' => FALSE,
     // Overriden or useless
+    'sites/all/modules/contrib/menu_minipanels/css/menu_minipanels.css' => FALSE,
     'sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css' => FALSE,
     'sites/all/modules/contrib/date/date_api/date.css' => FALSE,
     'sites/all/modules/contrib/picture/picture_wysiwyg.css' => FALSE,

@@ -130,3 +130,39 @@ function generoi_preprocess_block(&$variables) {
       break;
   }
 }
+
+/**
+ * Implements template_preprocess_panels_pane().
+ */
+function generoi_preprocess_panels_pane(&$variables) {
+  switch ($variables['pane']->type) {
+    case 'menu':
+      break;
+  }
+}
+
+/**
+ * Implements template_preprocess_link().
+ *
+ * Clean up menu minipanels output.
+ *
+ * @see generoi_link().
+ * @see generoi_preprocess_menu_minipanel().
+ */
+function generoi_preprocess_link(&$variables) {
+  if (!empty($variables['options']['minipanel'])) {
+    $variables['options']['attributes']['class'] = array('menu-minipanel');
+  }
+}
+
+/**
+ * Implements template_preprocess_menu_minipanel().
+ *
+ * Add necessary foundation classes.
+ *
+ * @see generoi_link().
+ * @see generoi_preprocess_link().
+ */
+function generoi_preprocess_menu_minipanel(&$variables) {
+  $variables['classes_array'][] = 'dropdown';
+}
