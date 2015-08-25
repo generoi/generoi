@@ -9,6 +9,8 @@ base theme = zurb_foundation
 plugins[panels][layouts] = plugins/layouts
 plugins[panels][styles] = plugins/styles
 
+scripts[] = scripts/ajax.js
+
 ; Foundation settings
 
 ; Top Bar.
