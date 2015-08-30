@@ -83,3 +83,14 @@ function generoi_js_alter(&$javascript) {
   );
   $javascript = array_diff_key($javascript, $exclude);
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function generoi_form_views_exposed_form_alter(&$form, &$form_state) {
+  if (isset($form['search_api_views_fulltext'])) {
+    $form['search_api_views_fulltext']['#placeholder'] = t('Search');
+    $form['submit']['#attributes']['class'][] = 'postfix';
+    $form['submit']['#value'] = t('Search');
+  }
+}
