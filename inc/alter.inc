@@ -46,8 +46,8 @@ function generoi_date_select_process_alter(&$element, $form_state, $context) {
  */
 function generoi_css_alter(&$css) {
   $exclude = array(
-    'sites/all/themes/contrib/zurb-foundation/css/normalize.css' => FALSE,
-    'sites/all/themes/contrib/zurb-foundation/css/foundation.min.css' => FALSE,
+    'sites/all/themes/contrib/zurb_foundation/css/normalize.css' => FALSE,
+    'sites/all/themes/contrib/zurb_foundation/css/foundation.min.css' => FALSE,
     // Overriden or useless
     'sites/all/modules/contrib/menu_minipanels/css/menu_minipanels.css' => FALSE,
     'sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css' => FALSE,
