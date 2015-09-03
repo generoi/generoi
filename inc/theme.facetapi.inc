@@ -58,7 +58,7 @@ function generoi_facetapi_link_active($variables) {
     '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
     '!facetapi_markup' => $link_text,
   );
-  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup !facetapi_markup', $replacements);
+  $variables['text'] = t('!facetapi_accessible_markup !facetapi_markup !facetapi_deactivate_widget ', $replacements);
   $variables['options']['html'] = TRUE;
   $variables['options']['attributes']['title'] = t('Remove @filter filter', array('@filter' => $link_text));
   return theme_link($variables);
@@ -68,7 +68,7 @@ function generoi_facetapi_link_active($variables) {
  * Overrides theme_facetapi_deactivate_widget().
  */
 function generoi_facetapi_deactivate_widget($variables) {
-  return '<span class="remove">&times;</span>';
+  return '<span class="remove mi-remove_circle"></span>';
 }
 
 /**
@@ -130,11 +130,11 @@ function generoi_search_api_fivestar_facetapi_link_active($variables) {
   // Builds link, passes through t() which gives us the ability to change the
   // position of the widget on a per-language basis.
   $replacements = array(
-    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
     '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
     '!facetapi_markup' => $link_text,
+    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
   );
-  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup !facetapi_markup', $replacements);
+  $variables['text'] = t('!facetapi_accessible_markup !facetapi_markup !facetapi_deactivate_widget ', $replacements);
   $variables['options']['html'] = TRUE;
   $variables['options']['attributes']['title'] = t('Remove @filter/5 filter', array('@filter' => $variables['rating']));
 
