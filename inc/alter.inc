@@ -53,6 +53,7 @@ function generoi_css_alter(&$css) {
     'sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css' => FALSE,
     'sites/all/modules/contrib/date/date_api/date.css' => FALSE,
     'sites/all/modules/contrib/picture/picture_wysiwyg.css' => FALSE,
+    'sites/all/modules/contrib/commerce_price_savings_formatter/theme/commerce_price_savings_formatter.css' => FALSE,
     'modules/user/user.css' => FALSE,
     'modules/node/node.css' => FALSE,
     'sites/all/modules/contrib/logintoboggan/logintoboggan.css' => FALSE,
