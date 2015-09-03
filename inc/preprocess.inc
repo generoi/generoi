@@ -136,9 +136,6 @@ function generoi_preprocess_block(&$variables) {
  * Implements template_preprocess_panels_pane().
  */
 function generoi_preprocess_panels_pane(&$variables) {
-  // Expose the heading tag so it can be easily overridden in subthemes.
-  $variables['heading_tag'] = 'h5';
-
   switch ($variables['pane']->type) {
     case 'menu':
       break;
