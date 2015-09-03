@@ -70,6 +70,7 @@ function generoi_preprocess_node(&$variables) {
     // Add a class to full page nodes
     $variables['classes_array'][] = 'node-full';
   }
+  $variables['attributes_array']['data-id'] = $variables['nid'];
 }
 
 /**
