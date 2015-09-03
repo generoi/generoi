@@ -1,7 +1,7 @@
 (function ($) {
   'use strict';
 
-  if (Drupal.facetapi.makeCheckbox) {
+  if (Drupal.facetapi && Drupal.facetapi.makeCheckbox) {
     /**
     * Replace an unclick link with a checked checkbox.
     */
