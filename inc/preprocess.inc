@@ -74,6 +74,37 @@ function generoi_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_field().
+ */
+function generoi_preprocess_field(&$variables) {
+  if (!empty($variables['element']['#formatter'])) {
+    switch ($variables['element']['#formatter']) {
+      // Smart trim format removes the paragraph wrapper.
+      case 'smart_trim_format':
+        foreach ($variables['items'] as $idx => &$item) {
+          $item['#markup'] = '<p>' . $item['#markup'] . '</p>';
+        }
+        break;
+    }
+  }
+  // Convert newlines to <br> and wrap in a paragraph for plain text full text
+  // fields.
+  switch ($variables['element']['#field_type']) {
+    case 'text_long':
+    case 'text_with_summary':
+      $field_name = $variables['element']['#field_name'];
+      $language = $variables['element']['#language'];
+      $entity = $variables['element']['#object'];
+      foreach ($variables['items'] as $idx => &$item) {
+        if (is_null($entity->{$field_name}[$language][$idx]['format'])) {
+          $item['#markup'] = '<p>' . nl2br($item['#markup']) . '</p>';
+        }
+      }
+      break;
+  }
+}
+
+/**
  * Implements template_preprocess().
  */
 function generoi_preprocess(&$variables, $hook) {
