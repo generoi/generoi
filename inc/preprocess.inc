@@ -59,6 +59,20 @@ function generoi_preprocess_taxonomy_term(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_entity().
+ */
+function generoi_preprocess_entity(&$variables) {
+  switch ($variables['entity_type']) {
+    case 'commerce_product':
+      $view_mode = !empty($variables['view_mode']) ? $variables['view_mode'] : 'default';
+      $view_mode = preg_replace('/^node_/', '', $view_mode);
+      $variables['classes_array'][] = 'l-vm-' . $view_mode;
+      $variables['classes_array'][] = 'commerce-product';
+      break;
+  }
+}
+
+/**
  * Implements template_preprocess_node
  */
 function generoi_preprocess_node(&$variables) {
@@ -96,6 +110,9 @@ function generoi_preprocess_field(&$variables) {
       $language = $variables['element']['#language'];
       $entity = $variables['element']['#object'];
       foreach ($variables['items'] as $idx => &$item) {
+        if (!isset($entity->{$field_name}[$language])) {
+          continue;
+        }
         if (is_null($entity->{$field_name}[$language][$idx]['format'])) {
           $item['#markup'] = '<p>' . nl2br($item['#markup']) . '</p>';
         }
