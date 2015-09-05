@@ -178,7 +178,8 @@ function generoi_preprocess_panels_pane(&$variables) {
  *
  * Clean up menu minipanels output.
  *
- * @see generoi_link().
+ * @see generoi_links().
+ * @see generoi_theme_registry_alter().
  * @see generoi_preprocess_menu_minipanel().
  */
 function generoi_preprocess_link(&$variables) {
@@ -192,7 +193,8 @@ function generoi_preprocess_link(&$variables) {
  *
  * Add necessary foundation classes.
  *
- * @see generoi_link().
+ * @see generoi_links().
+ * @see generoi_theme_registry_alter().
  * @see generoi_preprocess_link().
  */
 function generoi_preprocess_menu_minipanel(&$variables) {

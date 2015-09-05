@@ -80,6 +80,7 @@ function generoi_field($variables) {
  * Set a foudnation has-dropdown class for menu_minipanel links.
  *
  * @see generoi_preprocess_link().
+ * @see generoi_theme_registry_alter().
  * @see generoi_preprocess_menu_minipanel().
  */
 function generoi_links($variables) {
@@ -90,6 +91,7 @@ function generoi_links($variables) {
   $output = '';
 
   if (count($links) > 0) {
+
     // Treat the heading first if it is present to prepend it to the
     // list of links.
     if (!empty($heading)) {
@@ -98,6 +100,7 @@ function generoi_links($variables) {
         // is a string.
         $heading = array(
           'text' => $heading,
+
           // Set the default level of the heading.
           'level' => 'h2',
         );
@@ -119,14 +122,13 @@ function generoi_links($variables) {
 
       // Add first, last and active classes to the list of links to help out themers.
       if ($i == 1) {
-        $class [] = 'first';
+        $class[] = 'first';
       }
       if ($i == $num_links) {
-        $class [] = 'last';
+        $class[] = 'last';
       }
-      if (isset($link['href']) && ($link['href'] == $_GET ['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))
-         && (empty($link['language']) || $link['language']->language == $language_url->language)) {
-        $class [] = 'active';
+      if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page())) && (empty($link['language']) || $link['language']->language == $language_url->language)) {
+        $class[] = 'active';
       }
       $li_attributes = array('class' => $class);
 
@@ -139,7 +141,7 @@ function generoi_links($variables) {
 
       if (isset($link['href'])) {
         // Pass in $link as $options, they share the same keys.
-        $output .= l($link['title'], $link['href'], $link);
+        $output .= module_exists('menu_minipanels') ? menu_minipanels_theme_link($link) : theme_link($link);
       }
       elseif (!empty($link['title'])) {
         // Some links are actually not links, but we wrap these in <span> for adding title and class attributes.

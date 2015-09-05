@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Implements hook_theme_registry_alter().
+ */
+function generoi_theme_registry_alter(&$vars) {
+  // Requires patch https://www.drupal.org/node/1758866
+  if (module_exists('menu_minipanels')) {
+    $vars['links']['function'] = 'generoi_links';
+  }
+}
+
+/**
  * Implements hook_date_select_process_alter().
  *
  * Make date selects use proper month names instead of odd abbreviations.
